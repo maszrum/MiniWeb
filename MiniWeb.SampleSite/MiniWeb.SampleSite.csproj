@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MiniWeb.Authentication.Jwt\MiniWeb.Authentication.Jwt.csproj" />
+    <ProjectReference Include="..\MiniWeb.Json\MiniWeb.Json.csproj" />
+    <ProjectReference Include="..\MiniWeb.Logging.Serilog\MiniWeb.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\MiniWeb.Server\MiniWeb.Server.csproj" />
+  </ItemGroup>
+
+</Project>
