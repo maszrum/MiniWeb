@@ -12,8 +12,4 @@
     <ProjectReference Include="..\MiniWeb.Core\MiniWeb.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Server\" />
-  </ItemGroup>
-
 </Project>

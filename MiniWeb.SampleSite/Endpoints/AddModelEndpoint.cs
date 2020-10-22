@@ -7,21 +7,21 @@ using MiniWeb.Server.Responses;
 
 namespace MiniWeb.SampleSite.Endpoints
 {
-	[AuthenticationRequired]
-	internal class AddModelEndpoint : JsonEndpoint<FooModel>
-	{
-		private readonly IDataSource _dataSource;
+    [AuthenticationRequired]
+    internal class AddModelEndpoint : JsonEndpoint<FooModel>
+    {
+        private readonly IDataSource _dataSource;
 
-		public AddModelEndpoint(IDependencyProvider dependencyProvider)
-		{
-			_dataSource = dependencyProvider.Get<IDataSource>();
-		}
+        public AddModelEndpoint(IDependencyProvider dependencyProvider)
+        {
+            _dataSource = dependencyProvider.Get<IDataSource>();
+        }
 
-		public override IWebResponse Process(FooModel input, IWebRequest request)
-		{
-			_dataSource.Add(input);
+        public override IWebResponse Process(FooModel input, IWebRequest request)
+        {
+            _dataSource.Add(input);
 
-			return new OkResponse();
-		}
-	}
+            return new OkResponse();
+        }
+    }
 }

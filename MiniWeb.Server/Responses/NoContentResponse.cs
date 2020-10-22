@@ -2,21 +2,21 @@
 
 namespace MiniWeb.Server.Responses
 {
-	public sealed class NoContentResponse : BaseResponse
-	{
-		public override HttpStatusCode StatusCode { get; set; }
+    public sealed class NoContentResponse : BaseResponse
+    {
+        public override HttpStatusCode StatusCode { get; set; }
 
-		public NoContentResponse() : this(HttpStatusCode.NoContent)
-		{
-		}
+        public NoContentResponse() : this(HttpStatusCode.NoContent)
+        {
+        }
 
-		public NoContentResponse(HttpStatusCode statusCode)
-		{
-			StatusCode = statusCode;
-		}
+        public NoContentResponse(HttpStatusCode statusCode)
+        {
+            StatusCode = statusCode;
+        }
 
-		protected override void Rewrite(HttpListenerResponse response)
-		{
-		}
-	}
+        protected override void Rewrite(HttpListenerResponse response)
+        {
+        }
+    }
 }

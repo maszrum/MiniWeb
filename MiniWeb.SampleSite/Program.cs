@@ -12,39 +12,39 @@ using MiniWeb.Server;
 
 namespace MiniWeb.SampleSite
 {
-	internal class Program
-	{
-		private static async Task Main()
-		{
-			var containerBuilder = new ContainerBuilder();
-			ConfigureServices(containerBuilder);
+    internal class Program
+    {
+        private static async Task Main()
+        {
+            var containerBuilder = new ContainerBuilder();
+            ConfigureServices(containerBuilder);
 
-			var server = new WebServerBuilder(containerBuilder)
-				.WithBaseUrl("http://localhost:8080/mysite/")
-				.AddEndpoint<AddModelEndpoint>(HttpMethod.Post, "foos")
-				.AddEndpoint<GetModelsEndpoint>(HttpMethod.Get, "foos")
-				.AddEndpoint<SignInEndpoint>(HttpMethod.Post, "signin")
-				.AddJwtAuthentication<SignInModel, AuthenticationService>(settings =>
-				{
-					settings.Expires = TimeSpan.FromDays(1);
-					settings.Secret = "zaq1@WSXcde3$RFVzaq1@WSXcde3$RFV";
-				})
-				.ConfigureSerilog()
-				.Build();
+            var server = new WebServerBuilder(containerBuilder)
+                .WithBaseUrl("http://localhost:8080/mysite/")
+                .AddEndpoint<AddModelEndpoint>(HttpMethod.Post, "foos")
+                .AddEndpoint<GetModelsEndpoint>(HttpMethod.Get, "foos")
+                .AddEndpoint<SignInEndpoint>(HttpMethod.Post, "signin")
+                .AddJwtAuthentication<SignInModel, AuthenticationService>(settings =>
+                {
+                    settings.Expires = TimeSpan.FromDays(1);
+                    settings.Secret = "zaq1@WSXcde3$RFVzaq1@WSXcde3$RFV";
+                })
+                .ConfigureSerilog()
+                .Build();
 
-			AppDomain.CurrentDomain.ProcessExit += (sender, e) =>
-			{
-				server.Dispose();
-			};
+            AppDomain.CurrentDomain.ProcessExit += (sender, e) =>
+            {
+                server.Dispose();
+            };
 
-			await server.OpenAsync();
-		}
+            await server.OpenAsync();
+        }
 
-		private static void ConfigureServices(ContainerBuilder containerBuilder)
-		{
-			containerBuilder.RegisterType<InMemoryDataSource>()
-				.As<IDataSource>()
-				.SingleInstance();
-		}
-	}
+        private static void ConfigureServices(ContainerBuilder containerBuilder)
+        {
+            containerBuilder.RegisterType<InMemoryDataSource>()
+                .As<IDataSource>()
+                .SingleInstance();
+        }
+    }
 }

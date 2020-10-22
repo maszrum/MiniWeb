@@ -2,17 +2,17 @@
 
 namespace MiniWeb.Server.Responses
 {
-	public sealed class OkResponse : BaseResponse
-	{
-		public override HttpStatusCode StatusCode { get; set; }
+    public sealed class OkResponse : BaseResponse
+    {
+        public override HttpStatusCode StatusCode { get; set; }
 
-		public OkResponse()
-		{
-			StatusCode = HttpStatusCode.OK;
-		}
+        public OkResponse()
+        {
+            StatusCode = HttpStatusCode.OK;
+        }
 
-		protected override void Rewrite(HttpListenerResponse response)
-		{
-		}
-	}
+        protected override void Rewrite(HttpListenerResponse response)
+        {
+        }
+    }
 }
